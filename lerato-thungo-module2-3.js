@@ -153,3 +153,49 @@ typeof Boolean(undefined));
 console.log("String:", String(undefined),
 typeof String(undefined));
 
+// Part B
+// "5" + 3
+// Output: "53"
+// Type: String
+// JavaScript converts 3 to a string because  the operato (+) concatenates when a string is involved.
+console.log("5" + 3, typeof ("5" + 3));
+
+// "5" - 3
+// Output: 2
+// Type: number
+// JavaScript converts "5" to a number because - is an arithmetic operator.
+console.log("5" - 3, typeof ("5" - 3));
+
+// "5" * "2"
+// Output: 10
+// Type: number
+// JavaScript converts both strings to numbers because * performs arithmetic.
+console.log("5" * "2", typeof ("5" * "2"));
+
+// true + "1"
+// Output: "true1"
+// Type: string
+// JavaScript converts 3 to a string because  the operato (+) concatenates when a string is involved.
+console.log(true + "1", typeof (true + "1"));
+
+// 1 / 0
+// Output: infinity
+// Type: number
+// JavaScript represents division of a non-zero number by zero as Infinity.
+console.log(1 / 0, typeof (1 / 0));
+
+// [] + []
+// Output: ""
+// Type: string
+// JavaScript converts both empty arrays to empty strings.
+console.log([] + [], typeof ([] + []));
+
+// [1] + [2]
+// Output: "12"
+// Type: string
+// JavaScript converts both arrays to strings.
+console.log([1] + [2], typeof ([1] + [2]));
+
+// Part C
+// Question 1: A number() tries to convert a value into a number, while parseInt() only wants a whole number from the beginning of the value.
+// Question 2: I would use parseFloat() because it allows to preserve decimal values. Using parseInt() on something that involves money could be risky because it removes the decimal part which may cause incorrect money calculations. 
