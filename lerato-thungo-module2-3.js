@@ -55,3 +55,101 @@ console.log(typeof function() {});
 // According to the historical JavaScript implementation quirk. In early JavaScript, null was represented using the same type tag as objects. The behaviour was kept for backward compatibility.
 
 // NaN means "Not a Number", but it is still a special value that belongs to JavaScript's Number type. It represents an invalid or undefined numeric result rather than being a separate data type.
+
+// Challenge 2: Part A
+// "123"
+console.log("Number:", Number("123"),
+typeof Number("123"));
+console.log("parseInt:", parseInt("123"), 
+typeof parseInt("123"));
+console.log("parseFloat:", parseFloat("123"),
+typeof parseFloat("123"));
+console.log("Boolean:", Boolean("123"), 
+typeof Boolean("123"));
+console.log("String:", String("123"), 
+typeof String("123"));
+
+// "3.14"
+console.log("Number:", Number("3.14"), 
+typeof Number("3.14"));
+console.log("parseInt:", parseInt("3.14"), 
+typeof parseInt("3.14"));
+console.log("parseFloat:", parseFloat("3.14"), 
+typeof parseFloat("3.14"));
+console.log("Boolean:", Boolean("3.14"), 
+typeof Boolean("3.14"));
+console.log("String:", String("3.14"), 
+typeof String("3.14"));
+
+// "hello"
+console.log("Number:", Number("hello"), 
+typeof Number("hello"));
+console.log("parseInt:", parseInt("hello"), 
+typeof parseInt("hello"));
+console.log("parseFloat:", parseFloat("hello"),
+typeof parseFloat("hello"));
+console.log("Boolean:", Boolean("hello"), 
+typeof Boolean("hello"));
+console.log("String:", String("hello"), 
+typeof String("hello"));
+
+// "42abc"
+console.log("Number:", Number("42abc"), 
+typeof Number("42abc"));
+console.log("parseInt:", parseInt("42abc"), 
+typeof parseInt("42abc"));
+console.log("parseFloat:", parseFloat("42abc"), 
+typeof parseFloat("42abc"));
+console.log("Boolean:", Boolean("42abc"), 
+typeof Boolean("42abc"));
+console.log("String:", String("42abc"), 
+typeof String("42abc"));
+
+// ""
+console.log("Number:", Number(""), 
+typeof Number(""));
+console.log("parseInt:", parseInt(""), 
+typeof parseInt(""));
+console.log("parseFloat:", parseFloat(""),
+typeof parseFloat(""));
+console.log("Boolean:", Boolean(""), 
+typeof Boolean(""));
+console.log("String:", String(""), 
+typeof String(""));
+
+// 0
+console.log("Number:", Number(0), 
+typeof Number(0));
+console.log("parseInt:", parseInt(0), 
+typeof parseInt(0));
+console.log("parseFloat:", parseFloat(0), 
+typeof parseFloat(0));
+console.log("Boolean:", Boolean(0), 
+typeof Boolean(0));
+console.log("String:", String(0), 
+typeof String(0));
+
+// null
+console.log("Number:", Number(null),
+typeof Number(null));
+console.log("parseInt:", parseInt(null), 
+typeof parseInt(null));
+console.log("parseFloat:", parseFloat(null), 
+typeof parseFloat(null));
+console.log("Boolean:", Boolean(null), 
+typeof Boolean(null));
+console.log("String:", String(null), 
+typeof String(null));
+
+// undefined
+console.log("Number:", Number(undefined), 
+typeof Number(undefined));
+console.log("parseInt:", parseInt(undefined), 
+typeof parseInt(undefined));
+console.log("parseFloat:", parseFloat(undefined), 
+typeof parseFloat(undefined));
+console.log("Boolean:", Boolean(undefined), 
+typeof Boolean(undefined));
+console.log("String:", String(undefined),
+typeof String(undefined));
+
