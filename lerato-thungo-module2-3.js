@@ -199,3 +199,47 @@ console.log([1] + [2], typeof ([1] + [2]));
 // Part C
 // Question 1: A number() tries to convert a value into a number, while parseInt() only wants a whole number from the beginning of the value.
 // Question 2: I would use parseFloat() because it allows to preserve decimal values. Using parseInt() on something that involves money could be risky because it removes the decimal part which may cause incorrect money calculations. 
+
+// Challenge 3
+// 1. Arithmetic
+// Modulo checks whether the net salary is evenly divisible by 100.
+
+const grossSalary = 45000;
+const taxRate = 0.25;
+const taxAmount = grossSalary * taxRate;
+const uifRate = 0.01;
+const uifAmount = grossSalary * uifRate;
+const medicalAid = 2500;
+
+const netSalary = grossSalary - taxAmount - uifAmount - medicalAid;
+const remainder = netSalary % 100;
+
+console.log("Net salary" + netSalary);
+
+// 2. Assignment
+
+let cartTotal = 0;
+cartTotal += 150; 
+cartTotal += 85;  
+cartTotal += 220;
+
+cartTotal *= 0.90; // 10% discount.
+cartTotal *= 1.15; // 15% VAT.
+
+console.log("Final cart total" + cartTotal.toFixed(2));
+// Final cart total: R470.93
+
+// 3. Comparison
+
+const userAge = 18;
+const password = "hello123";
+const email = "lerato@gmail.com";
+const confirmedEmail = "lerato@gmail.com";
+
+const validAge = age >= 18;
+const validPassword = password.length >= 8;
+const matchingEmails = email === confirmedEmail;
+
+console.log("Age valid:", validAge);
+console.log("Password valid:", validPassword);
+console.log("Emails match:", matchingEmails);
