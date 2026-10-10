@@ -243,3 +243,156 @@ const matchingEmails = email === confirmedEmail;
 console.log("Age valid:", validAge);
 console.log("Password valid:", validPassword);
 console.log("Emails match:", matchingEmails);
+
+// 4. Logical Operators
+
+const isLoggedIn = true;
+const isEmailVerified = false;
+const isAdmin = false;
+
+const canAccessDashboard = (isLoggedIn && isEmailVerified) || isAdmin;
+
+console.log("Can access dashboard:", canAccessDashboard); // false
+
+// 5. Unary: Convert a form value to a number and toggle dark mode.
+
+const formAge = "25";
+const numericAge = +formAge;
+
+let isDarkMode = true;
+isDarkMode = !isDarkMode;
+
+console.log("Numeric age:", numericAge); 
+console.log("Age type:", typeof numericAge); 
+console.log("Dark mode:", isDarkMode);
+
+// 6. Ternary: Assign a membership badge based on membership type.
+
+const membershipType = "trial";
+
+const badge =
+membershipType === "premium"
+? "Premium Member"
+: membershipType === "trial"
+? "Trial Member"
+: "Free Member";
+
+console.log("Membership badge:", badge); // Trial Member
+
+// 7. String Concatenation: Create a greeting using + and a template literal.
+
+const name = "Thabo Nkosi";
+const personAge = 28;
+
+// Using + to join strings and variables.
+const greetingWithPlus = "Welcome back " + name + ", you are " + age + " years old.";
+
+// Using a template literal to insert variables into a string.
+const greetingWithTemplate = `Welcome back ${name}, you are ${age} years old.`;
+
+console.log(greetingWithPlus);
+console.log(greetingWithTemplate);
+
+// I think template literals are easier to read when a sentence contains many variables. The sentence stays together instead of being split into multiple strings.
+
+
+// Prefix (++x) vs Postfix (x++)
+// Prefix increases the variable before its value is used, while Postfix uses the current value before increasing the variable.
+let a = 5;
+let b = 5;
+console.log(++a); // 6
+console.log(b++); // 5
+console.log(b);   // 6
+
+// Three real-world uses of the modulo (%) operator:
+// Even or odd: number % 2 === 0 checks if a number is even.
+// Scheduling: index % 5 === 0 can identify every fifth item.
+// Cycling through items: index % 3 can rotate through three images or banner items repeatedly.
+
+// Are nested ternaries good practice?
+// Nested ternaries are not always bad, but they should be used carefully because too many conditions can make code difficult to read and maintain.
+// I would avoid nested ternaries when there are many conditions, the logic is complicated, or the code becomes difficult to understand. In these situations, if...else if...else statements are clearer and easier to debug.
+
+// Challenge 4: Part A
+
+// Prediction: true
+console.log(0 == false); // true
+// Loose equality converts false to 0 before comparing.
+
+// Prediction: false
+console.log(0 === false); // false
+// Strict equality does not convert types; number and Boolean differ.
+
+// Prediction: false
+console.log("" == 0); // true
+// Loose equality converts the empty string to the number 0.
+
+// Prediction: false
+console.log("" === 0); // false
+// A string and a number are different types.
+
+// Prediction: true
+console.log("0" == 0); // true
+// Loose equality converts the string "0" to the number 0.
+
+// Prediction: false
+console.log("0" === 0); // false
+// Strict equality does not convert the string to a number.
+
+// Prediction: true
+console.log(null == undefined); // true
+// Loose equality has a special rule that treats null and undefined as equal.
+
+// Prediction: false
+console.log(null === undefined); // false
+// Strict equality treats null and undefined as different types.
+
+// Prediction: false
+console.log(null == 0); // false
+// Loose equality does not treat null as equal to zero.
+
+// Prediction: true
+console.log(null >= 0); // true
+// The relational comparison converts null to 0, and 0 >= 0 is true.
+
+// Prediction: false
+console.log(null > 0); // false
+// Null converts to 0, and 0 is not greater than 0.
+
+// Prediction: false
+console.log(NaN == NaN); // false
+// NaN is not equal to any value, including itself.
+
+// Prediction: false
+console.log(NaN === NaN); // false
+// Strict equality also treats NaN as unequal to itself.
+
+// Prediction: true
+console.log(Object.is(NaN, NaN)); // true
+// Object.is() considers NaN equal to itself.
+
+// Prediction: true
+console.log(+0 === -0); // true
+// Strict equality treats positive zero and negative zero as equal.
+
+
+// Prediction: false
+console.log(Object.is(+0, -0)); // false
+// Object.is() distinguishes positive zero from negative zero.
+
+
+// Prediction: true
+console.log([1, 2, 3] == "1,2,3"); // true
+// The array converts to the string "1,2,3", matching the other string.
+
+// Prediction: true
+console.log([] == false); // true
+// The array converts to "" and then 0, while false converts to 0.
+
+// Prediction: true
+console.log([] == 0); // true
+// The empty array converts to "" and then to the number 0.
+
+// Prediction: true
+console.log([0] == false); // true
+// [0] converts to "0" and then 0, while false converts to 0.
