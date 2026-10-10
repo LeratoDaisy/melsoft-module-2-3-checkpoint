@@ -664,3 +664,43 @@ console.log("9.", result9, "| Type:", typeof result9);
 const result10 = null?.foo?.bar?.baz;
 console.log("10.", result10, "| Type:", typeof result10);
 
+
+// Challenge 7: Part A
+
+console.log("1. typeof 42:", typeof 42);
+// Expected: "number"
+
+console.log("2. typeof 'hello':", typeof "hello");
+// Expected: "string"
+
+console.log("3. typeof true:", typeof true);
+// Expected: "boolean"
+
+console.log("4. typeof undefined:", typeof undefined);
+// Expected: "undefined"
+
+console.log("5. typeof null:", typeof null);
+// Expected: "object" (historical JavaScript quirk)
+
+console.log("6. typeof {}:", typeof {});
+// Expected: "object"
+
+console.log("7. typeof []:", typeof []);
+// Expected: "object" (arrays are objects in JavaScript)
+
+console.log("8. typeof function() {}:", typeof function() {});
+// Expected: "function"
+
+console.log("9. typeof NaN:", typeof NaN);
+// Expected: "number"
+
+console.log(
+  "10. typeof undeclaredVariable:",
+  typeof undeclaredVariable
+);
+// Expected: "undefined"
+// typeof does not throw for an undeclared identifier.
+
+// One-liner 
+console.log(Array.isArray([])); // true: array
+console.log(Array.isArray({})); // false: plain object
