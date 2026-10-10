@@ -530,3 +530,137 @@ console.log("5" + 3 * 2); // "56"
 // Step 1: "5" - 3 = 2 
 // Step 2: 2 + 2 = 4
 console.log("5" - 3 + 2); // 4
+
+// Interview answer: I add parentheses when an expression combines different operators or becomes complex, because they make the intended order of operations clearer and easier to understand. They are especially useful in calculations involving money or business logic, where readability helps prevent mistakes. I avoid unnecessary parentheses in simple expressions to keep the code clean.
+
+// Challenge 6: Part A
+
+const percentages = [95, 82, 73, 65, 54, 42, 0, 100];
+
+for (const percentage of percentages) {
+ const grade =
+ percentage >= 90 ? "A" :
+ percentage >= 80 ? "B" :
+ percentage >= 70 ? "C" :
+ percentage >= 60 ? "D" :
+ percentage >= 50 ? "E" : "F";
+
+  console.log(`${percentage}% = ${grade}`);
+}
+
+// Part B
+// User 1: All fields are missing.
+const userMissing = {};
+
+// User 2: notificationCount is 0 and theme is an empty string.
+const userWithEmptyValues = { notificationCount: 0, theme: "" };
+
+// Parse the user profile and assign default values.
+function parseUser(user) {
+  return {
+    displayName: user.displayName || "Guest User",
+    theme: user.theme || "light",
+    maxResults: user.maxResults || 10,
+
+    lastLogin: user.lastLogin ?? "Never",
+    notificationCount: user.notificationCount ?? 0
+  };
+}
+
+console.log("User 1:", parseUser(userMissing));
+console.log("User 2:", parseUser(userWithEmptyValues));
+// **`||` (logical OR):** Uses the default when the value is falsy, including an empty string (`""`) or zero (`0`). Therefore, the empty `theme` becomes `"light"`.
+// **`??` (nullish coalescing):** Uses the default only when the value is `null` or `undefined`. Therefore, `notificationCount: 0` remains `0`, because zero is a valid notification count.
+// Although both operators use defaults for missing fields, they handle empty strings and zero differently. 
+
+// Part C
+// Test user 1: Full address data.
+const userFull = {
+ name: "Lerato",
+ address: {
+ city: "Johannesburg"
+ }
+};
+
+// Test user 2: The address property is missing.
+const userNoAddress = {
+  name: "Thando"
+};
+
+// Test user 3: The entire user object is null.
+const userNull = null;
+
+const users = [
+  { label: "Full data", user: userFull },
+  { label: "Missing address", user: userNoAddress },
+  { label: "Null user", user: userNull }
+];
+// Technique 1: && guard clauses.
+ const cityWithAnd =
+ user && user.address && user.address.city;
+
+// Technique 2: Optional chaining.
+ const cityWithOptionalChaining =
+ user?.address?.city;
+
+// Technique 3: Optional chaining with a default.
+ const cityWithDefault =
+ user?.address?.city ?? "Unknown city";
+
+  console.log(item.label);
+  console.log("Using &&:", cityWithAnd);
+  console.log("Using ?.:", cityWithOptionalChaining);
+  console.log("Using ?. with default:", cityWithDefault);
+
+// Part D:
+
+// Expected output: "finally"
+// Expected type: "string"
+const result1 = null || undefined || 0 || "" || "finally";
+console.log("1.", result1, "| Type:", typeof result1);
+
+// Expected output: 0
+// Expected type: "number"
+const result2 = null ?? undefined ?? 0 ?? "" ?? "finally";
+console.log("2.", result2, "| Type:", typeof result2);
+
+// Expected output: "first truthy"
+// Expected type: "string"
+const result3 = 0 || "first truthy";
+console.log("3.", result3, "| Type:", typeof result3);
+
+// Expected output: 0
+// Expected type: "number"
+const result4 = 0 ?? "first non-nullish";
+console.log("4.", result4, "| Type:", typeof result4);
+
+// Expected output: false
+// Expected type: "boolean"
+const result5 = true && false && "never reached";
+console.log("5.", result5, "| Type:", typeof result5);
+
+// Expected output: "third"
+// Expected type: "string"
+const result6 = "first" && "second" && "third";
+console.log("6.", result6, "| Type:", typeof result6);
+
+// Expected output: "yes"
+// Expected type: "string"
+const result7 = false || (true && "yes");
+console.log("7.", result7, "| Type:", typeof result7);
+
+// Expected output: "yes"
+// Expected type: "string"
+const result8 = (false || true) && "yes";
+console.log("8.", result8, "| Type:", typeof result8);
+
+// Expected output: 3
+// Expected type: "number"
+const result9 = 1 && 2 && 3;
+console.log("9.", result9, "| Type:", typeof result9);
+
+// Expected output: undefined
+// Expected type: "undefined"
+const result10 = null?.foo?.bar?.baz;
+console.log("10.", result10, "| Type:", typeof result10);
+
