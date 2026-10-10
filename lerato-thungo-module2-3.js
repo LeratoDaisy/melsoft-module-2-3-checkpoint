@@ -396,3 +396,41 @@ console.log([] == 0); // true
 // Prediction: true
 console.log([0] == false); // true
 // [0] converts to "0" and then 0, while false converts to 0.
+
+// PART B
+
+function validateResetForm(newPassword, confirmPassword, currentEmail, confirmEmail) {
+ const passwordsMatch = newPassword === confirmPassword;
+ const emailsMatch = currentEmail === confirmEmail;
+ const passwordDiffersFromEmail = newPassword !== currentEmail;
+ const passwordIsLongEnough = newPassword.length >= 8;
+
+console.log("Passwords match: " + (passwordsMatch ? "PASS" : "FAIL"));
+console.log("Emails match: " + (emailsMatch ? "PASS" : "FAIL"));
+console.log("Password differs from email: " + (passwordDiffersFromEmail ? "PASS" : "FAIL"));
+console.log("Password is at least 8 characters: " + (passwordIsLongEnough ? "PASS" : "FAIL"));
+}
+
+// TEST CASE 1
+console.log("TEST CASE 1: Valid form");
+
+validateResetForm(
+    "SecurePass123",
+    "SecurePass123",
+    "lerato@gmail.com",
+    "lerato@gmail.com"
+);
+
+// TEST CASE 2
+console.log("\nTEST CASE 2: Invalid form");
+
+validateResetForm(
+    "short",
+    "different",
+    "lerato@example.com",
+    "other@example.com"
+);
+
+// Which equality operator did you use, and why?
+// I used strict equality (===) to check whether the passwords and email addresses match exactly.
+// Unlike loose equality (==), strict equality does not convert values to another type before comparing them.
