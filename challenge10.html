@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Interaction Challenge</title>
+</head>
+<body>
+  <h1>User Interaction Challenge</h1>
+    <p>Refresh the page to run the interaction again.</p>
+
+<script>
+// 1. Greet the user.
+  window.alert("Welcome to our interactive page!");
+
+// 2. Ask for the user's name.
+  const nameInput = window.prompt("What is your name?");
+  const name = nameInput === null || nameInput.trim() === ""
+    ? "Guest"
+    : nameInput.trim();
+
+// 3. Ask for and validate the user's age.
+  const ageInput = window.prompt("How old are you?");
+  const age = Number(ageInput);
+
+   if (
+    ageInput === null ||
+    ageInput.trim() === "" ||
+    Number.isNaN(age) ||
+    age < 1 || age > 120
+    ) {
+
+        window.alert("Invalid age. Please enter a number between 1 and 120.");
+    } else {
+// 4. Assign a tier using a ternary.
+  const tier = age < 18
+    ? "Youth"
+    : age < 60
+    ? "Adult"
+    : "Senior";
+
+// 5. Ask about newsletter subscription.
+  const subscribed = window.confirm( "Do you want to subscribe to our newsletter?" );
+
+  const subscriptionStatus = subscribed
+    ? "Subscribed"
+    : "Not subscribed";
+
+// 6. Display the user's summary.
+    window.alert(
+      `User Summary\n` +
+      `Name: ${name}\n` +
+      `Age: ${age}\n` +
+      `Tier: ${tier}\n` +
+      `Newsletter: ${subscriptionStatus}` );
+    }
+
+// Interview answers
+// 1. What does blocking mean, and why is it a problem?
+// Blocking means the browser pauses the current JavaScript execution until the user responds to alert(), confirm(), or prompt(). These pop-ups interrupt the user experience and prevent the current task from continuing while waiting.
+
+// 2. What would modern web apps use instead?
+// Developers generally use custom HTML/CSS dialogs, accessible modal components, inline forms, or notification components. These allow better styling, accessibility, validation, and control over the user experience.
+
+// 3. What does prompt() return?
+// Clicking Cancel returns null. Clicking OK with an empty field returns an empty string (""). If the user enters text, prompt() returns that text as a string.
+</script>
+</body>
+</html>

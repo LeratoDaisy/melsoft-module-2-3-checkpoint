@@ -204,17 +204,17 @@ console.log([1] + [2], typeof ([1] + [2]));
 // 1. Arithmetic
 // Modulo checks whether the net salary is evenly divisible by 100.
 
-const grossSalary = 45000;
+const salaryGross = 45000;
 const taxRate = 0.25;
-const taxAmount = grossSalary * taxRate;
+const taxAmount = salaryGross * taxRate;
 const uifRate = 0.01;
-const uifAmount = grossSalary * uifRate;
+const uifAmount = salaryGross * uifRate;
 const medicalAid = 2500;
 
-const netSalary = grossSalary - taxAmount - uifAmount - medicalAid;
+const netSalary = salaryGross - taxAmount - uifAmount - medicalAid;
 const remainder = netSalary % 100;
 
-console.log("Net salary" + netSalary);
+console.log("Net salary " + netSalary + ". Remainder after dividing by 100: " + remainder);
 
 // 2. Assignment
 
@@ -818,3 +818,107 @@ console.log(
 // 9. Create SUPER_ADMIN using the left-shift operator
 const SUPER_ADMIN = ADMIN << 1;
 console.log("SUPER_ADMIN permission flag:", SUPER_ADMIN); // 16
+
+// Challenge 9: SCENARIO 1
+const grossSalary = 45000;
+
+function formatZAR(amount) {
+  return `R ${amount.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })}`;
+}
+
+function calculatePayroll(gross) {
+  const paye = gross * 0.25;
+  const uif = Math.min(gross * 0.01, 177.12);
+  const medicalAid = 2500;
+  const pension = gross * 0.075;
+
+  const totalDeductions = paye + uif + medicalAid + pension;
+  const netSalary = gross - totalDeductions;
+
+console.log("\n--- PAYROLL PROCESSOR ---");
+console.log("Gross salary:", formatZAR(gross));
+console.log("PAYE:", formatZAR(paye));
+console.log("UIF:", formatZAR(uif));
+console.log("Medical aid:", formatZAR(medicalAid));
+console.log("Pension:", formatZAR(pension));
+console.log("Total deductions:", formatZAR(totalDeductions));
+console.log("Net salary:", formatZAR(netSalary));
+}
+
+calculatePayroll(grossSalary);
+
+const grossSalaryInput = "45000";
+const convertedSalary = Number(grossSalaryInput);
+
+if (!Number.isNaN(convertedSalary) && convertedSalary > 0) {
+    console.log("\nValid salary input received.");
+    calculatePayroll(convertedSalary);
+} else {
+    console.log("Invalid salary. Enter a positive number.");
+}
+
+// SCENARIO 2
+const principal = 25000;
+const annualRate = 0.075;
+const compoundsPerYear = 12;
+const years = 3;
+
+const finalBalance = principal * (1 + annualRate / compoundsPerYear) ** (compoundsPerYear * years);
+const totalInterest = finalBalance - principal;
+const effectiveAnnualRate = ((1 + annualRate / compoundsPerYear) ** compoundsPerYear - 1) * 100;
+
+console.log("\n COMPOUND INTEREST SAVINGS");
+console.log("Initial deposit:", formatZAR(principal));
+console.log("Final balance:", formatZAR(finalBalance));
+console.log("Total interest earned:", formatZAR(totalInterest));
+console.log("Effective annual rate:", `${effectiveAnnualRate.toFixed(2)}%`);
+
+function calculateMonthlyFee(balance) {
+  return balance < 1000 ? 25
+    : balance < 5000 ? 50
+    : balance < 25000 ? 75
+    : 0;
+}
+
+const testBalances = [500, 1500, 10000, 50000];
+console.log("\n MONTHLY AND ANNUAL FEES ");
+testBalances.forEach(balance => {
+    const monthlyFee = calculateMonthlyFee(balance);
+    const annualFee = monthlyFee * 12;
+
+console.log(`Balance: ${formatZAR(balance)}`);
+console.log(`Monthly fee: ${formatZAR(monthlyFee)}`);
+console.log(`Annual fee impact: ${formatZAR(annualFee)}`);
+console.log("");
+});
+
+// SCENARIO 3
+const transferAmountZAR = 15750.33;
+const commissionRate = 0.025;
+const exchangeRate = 18.42;
+
+const commissionZAR = transferAmountZAR * commissionRate;
+const amountAfterCommission = transferAmountZAR - commissionZAR;
+const amountUSD = amountAfterCommission / exchangeRate;
+
+function formatUSD(amount) {
+  return `$${amount.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })}`;
+}
+
+console.log("\n MULTI-CURRENCY TRANSFER");
+console.log("Original ZAR amount:", formatZAR(transferAmountZAR));
+console.log("Commission:", formatZAR(commissionZAR));
+console.log("ZAR after commission:", formatZAR(amountAfterCommission));
+console.log("USD received:", formatUSD(amountUSD));
+
+// JavaScript uses binary floating point numbers for ordinary number calculations. Some decimal fractions cannot be represented exactly in binary. For example, 0.1 + 0.2 produces 0.30000000000000004 rather than exactly 0.3.
+// This may cause small rounding differences in money calculations.
+// A bank would typically use integer minor units (such as cents) or an appropriate fixed point or decimal arithmetic system, with defined rounding rules.
+// Financial systems must also account for currency precision, transaction rules, and the rounding required by the relevant banking regulations.
+
