@@ -132,3 +132,28 @@ console.log("Discount:", formatZAR(discountAmount));
 console.log("VAT:", formatZAR(vat));
 console.log("Senior discount:", formatZAR(seniorDiscount));
 console.log("Total:", formatZAR(finalTotal))
+
+// Challenge 12
+// 1. What is the ONE most important thing you understood about JavaScript's type system from this project? Give an example where it bit you.
+// The most important thing I learned is that JavaScript can automatically convert values between types, and that can cause unexpected results. For example, when I worked with prices stored as strings, using the plus operator could join the values together instead of adding them mathematically. I learned that I should check the type of a value and convert it explicitly when necessary.
+
+// 2. Explain in your own words why using === is almost always safer than ==. Give one concrete case where == would silently cause a bug.
+// I learned that === checks both the value and the type, while == can convert values before comparing them. For example, 0 == false evaluates to true, even though a number and a Boolean are different types. Using === helps me avoid unexpected matches and makes my conditions easier to understand.
+
+// 3. When would you prefer the nullish coalescing operator (??) over the logical OR operator (||)? Give a specific example where swapping one for the other changes the outcome.
+// I would use ?? when I only want to provide a default value if something is null or undefined. For example, if a customer has a discount of 0, the expression discount ?? 10 keeps the value as 0, while discount || 10 returns 10. This matters because zero can be a valid value and should not always be treated as missing.
+
+// 4. typeof null returns 'object'. Explain WHY (the historical reason), and describe how you would check if a variable is specifically null without being tricked.
+// This is a historical JavaScript bug that has been kept for compatibility with older code. The typeof operator reports null as "object", even though null represents the intentional absence of a value. To check whether a variable is specifically null, I would use value === null instead of relying on typeof.
+
+// 5. Describe a realistic scenario in production code where forgetting to cast a value would cause a bug a developer might not notice for a long time.
+// A realistic example is processing an amount received from an API or an HTML input field. The value might arrive as a string even though it represents a number. If I forget to convert it before calculating totals, I could accidentally concatenate values or get an incorrect calculation. I would validate the input and convert it to a number before using it.
+
+// 6. In your banking calculator for Challenge 9, you had to handle floating-point arithmetic for money. Explain in your own words why 0.1 + 0.2 does NOT equal 0.3 in JavaScript, and the production-grade solution.
+// JavaScript uses binary floating-point numbers, and some decimal fractions cannot be represented exactly in that format. That is why 0.1 + 0.2 produces a result close to, but not exactly, 0.3. For real financial systems, I would store money in integer minor units, such as cents, or use a suitable decimal arithmetic library. I would also apply the required rounding rules consistently.
+
+// 7. Explain the difference between the single-character operators (& and |) and the double-character operators (&& and ||). Give one case where confusing them would cause a silent production bug.
+// The single-character operators & and | perform bitwise operations on numbers, while && and || are logical operators commonly used with conditions. For example, if I use & instead of && when checking whether a user is logged in and has permission to access a page, JavaScript may perform a bitwise operation rather than the intended logical check. This can produce an incorrect permission result without an obvious error.
+
+// 8. What was the single hardest Module 2 or Module 3 concept for you to grasp, and what finally made it click?
+// The hardest concept for me was type conversion and coercion. At first, I found it confusing that JavaScript could treat values differently depending on the operation, especially when working with strings and numbers. It started to make sense when I worked through practical examples involving prices and calculations. I realised that I need to understand the type of each value instead of assuming JavaScript will handle it the way I expect.
