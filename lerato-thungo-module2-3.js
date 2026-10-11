@@ -704,3 +704,117 @@ console.log(
 // One-liner 
 console.log(Array.isArray([])); // true: array
 console.log(Array.isArray({})); // false: plain object
+
+// Part B 
+
+// An array is an instance of Array
+console.log("1.", [] instanceof Array); // true
+
+// Arrays also inherit through Object
+console.log("2.", [] instanceof Object); // true
+
+// A plain object is an instance of Object
+console.log("3.", {} instanceof Object); // true
+
+// A primitive string is not a String object
+console.log("4.", "hello" instanceof String); // false
+
+// new String() creates a String object
+console.log("5.", new String("hello") instanceof String); // true
+
+// A primitive number is not a Number object
+console.log("6.", 42 instanceof Number); // false
+
+// new Date() creates a Date object
+console.log("7.", new Date() instanceof Date); // true
+
+// /abc/ creates a regular expression object
+console.log("8.", /abc/ instanceof RegExp); // true
+
+// typeof vs instanceof
+// typeof is appropriate for checking primitive types, while instanceof is appropriate for checking a specific object type.
+
+// Part C
+
+// 1. Delete a property from an object
+const userToDelete = { name: "Lerato", age: 25, role: "student" };
+console.log("Before deleting role:", userToDelete);
+delete userToDelete.role;
+
+console.log("After deleting role:", userToDelete);
+// The role property is removed, but the other properties remain.
+
+// 2. Attempt to delete a variable
+let x = 5; // The delete operator cannot delete variables declared with let, const, or var.
+
+// 3. Delete an array element
+const arr = [1, 2, 3, 4];
+delete arr[1];
+
+console.log("Array after delete:", arr); // [1, empty, 3, 4]
+console.log("Array length:", arr.length); // 4
+console.log("Element at index 1:", arr[1]); // undefined
+// deleting an array leaves an empty slot and somehow does not reduce the array's length.
+
+// 4. Attempt to delete Math.PI
+console.log("Delete Math.PI:", delete Math.PI); // false
+console.log("Math.PI:", Math.PI); // 3.141592653589793
+// Math.PI is non-configurable, meaning it cannot be removed with delete.
+
+// Final question
+const items = ["apple", "banana", "orange", "grape"];
+items.splice(1, 1);
+
+console.log("Items after removing banana:", items);
+// ["apple", "orange", "grape"]
+
+// Challenge 8 
+const READ = 1;   
+const WRITE = 2;  
+const DELETE = 4; 
+const ADMIN = 8;  
+
+// 2. Create a user with READ and WRITE permissions
+let user = READ | WRITE;
+console.log("Initial user permissions:", user); // 3
+
+// 3. Create an admin user with all permissions
+const adminUser = READ | WRITE | DELETE | ADMIN;
+console.log("Admin permissions:", adminUser); // 15
+
+// 4. Check whether the first user has READ permission
+console.log( "Has READ?", (user & READ) !== 0 ? "Yes" : "No" ); // Yes
+
+// 5. Check whether the first user has DELETE permission
+console.log( "Has DELETE?", (user & DELETE) !== 0 ? "Yes" : "No" ); // No
+
+// 6. Grant DELETE permission to the first user
+user |= DELETE;
+console.log("After granting DELETE:", user); // 7
+
+// 7. Revoke WRITE permission from the first user
+user &= ~WRITE;
+console.log("After revoking WRITE:", user); // 5
+
+// 8. Toggle ADMIN permission on and then off
+let toggleUser = READ | WRITE;
+console.log(
+ "ADMIN before toggle:",
+ (toggleUser & ADMIN) !== 0 ? "ON" : "OFF"
+); // OFF
+
+toggleUser ^= ADMIN;
+console.log(
+    "ADMIN after first toggle:",
+    (toggleUser & ADMIN) !== 0 ? "ON" : "OFF"
+); // ON
+
+toggleUser ^= ADMIN;
+console.log(
+    "ADMIN after second toggle:",
+    (toggleUser & ADMIN) !== 0 ? "ON" : "OFF"
+); // OFF
+
+// 9. Create SUPER_ADMIN using the left-shift operator
+const SUPER_ADMIN = ADMIN << 1;
+console.log("SUPER_ADMIN permission flag:", SUPER_ADMIN); // 16
